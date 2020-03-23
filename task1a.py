@@ -13,7 +13,7 @@ access_token_secret = 'ENTER ACCESS TOKEN SECRET'
 
 client = MongoClient('localhost', 27017)
 db = client['local']
-collection = db['Crawler 1a']
+collection = db['test_data']
 
 LOCATIONS = [6.7499552751, 36.619987291, 18.4802470232, 47.1153931748, #Italy
             -7.57216793459, 49.959999905, 1.68153079591, 58.6350001085, #United Kingdom

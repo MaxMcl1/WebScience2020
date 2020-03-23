@@ -16,13 +16,9 @@ from sklearn.cluster import KMeans
 from sklearn.externals import joblib
 from pymongo import MongoClient
 
-LOAD_KMEANS = False
-EVALUATION = False
-SAVE_GRAPH = False
-
 client = MongoClient('localhost', 27017)
 db = client['local']
-collection = db['Crawler 1b']
+collection = db['test_data']
 
 tweets = []
 hashtags = []
@@ -35,7 +31,6 @@ def clean_tweet(tweet):
 for tweet in collection.find({}, {"text": 1, "_id": 1, "entities": 1}):
     clean_tweet(tweet["text"])
     if (tweet["entities"].get("hashtags")) != []:
-        # need to handle tweets with multiple hashtags
         hashtags.append(tweet["entities"].get("hashtags")[0].get("text"))
     else:
         hashtags.append("")
